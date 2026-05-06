@@ -138,9 +138,19 @@ export default function Sidebar({
       label: "Produk",
       icon: Box,
       subItems: [
-        { id: "prod_kategori", label: "Kategori" },
-        { id: "prod_daftar", label: "Daftar Produk" },
-        { id: "prod_paket", label: "Paket" },
+        { id: "prod_departemen", label: "Departemen" },
+        { id: "prod_kategori", label: "Kategori Produk" },
+        { id: "prod_daftar", label: "Produk" },
+        { id: "prod_varian", label: "Varian" },
+        { id: "prod_bundle", label: "Bundle" },
+        {
+          id: "prod_preorder",
+          label: "Preorder",
+          subItems: [
+            { id: "prod_po_daftar", label: "Daftar Preorder" },
+            { id: "prod_po_kategori", label: "Kategori Preorder" },
+          ],
+        },
       ],
     },
     {
@@ -178,13 +188,14 @@ export default function Sidebar({
         { id: "pengaturan_slider", label: "Slider Gambar" },
         { id: "pengaturan_jam", label: "Jam Operasional" },
         { id: "pengaturan_metode_bayar", label: "Metode Pembayaran" },
+        { id: "pengaturan_tambah_cabang", label: "Tambah Cabang" },
       ],
     },
   ];
 
   return (
     <div className="w-64 bg-white border-r border-[#eaecf0] flex flex-col h-screen shrink-0 print:hidden overflow-hidden">
-      <div className="flex justify-center py-8 shrink-0">
+      <div className="flex justify-center py-6 shrink-0">
         <div className="flex items-center justify-center">
           <UrLogo />
         </div>
