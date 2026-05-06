@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body style="background: #ccc; padding: 50px;">
+
+<div style="background: #10b981; padding: 20px; border-radius: 16px; display: inline-block; position: relative; overflow: hidden; width: 60px; height: 60px;">
+  <!-- We want the logo to be WHITE. So its mask must be luminance of the inverted image -->
+  <div style="
+    position: absolute; inset: 0; 
+    background-color: white; 
+    mask-image: url('/logo.png');
+    -webkit-mask-image: url('/logo.png');
+    mask-mode: luminance;
+    -webkit-mask-mode: luminance;
+    mask-position: center;
+    -webkit-mask-position: center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+  "></div>
+</div>
+
+</body>
+</html>

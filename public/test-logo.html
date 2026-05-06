@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body style="background: #ccc; padding: 50px;">
+
+<div style="background: #10b981; padding: 20px; border-radius: 16px; display: inline-block;">
+  <canvas id="canvas" style="height: 50px;"></canvas>
+</div>
+
+<script>
+  const img = new Image();
+  img.src = '/logo.png';
+  img.onload = () => {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+    
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i+1];
+      const b = data[i+2];
+      
+      // If it's a white-ish background pixel
+      if (r > 200 && g > 200 && b > 200) {
+        data[i+3] = 0; // Make transparent
+      } else {
+        // Logo part - make it white
+        data[i] = 255;
+        data[i+1] = 255;
+        data[i+2] = 255;
+        data[i+3] = 255; 
+      }
+    }
+    ctx.putImageData(imageData, 0, 0);
+  };
+</script>
+
+</body>
+</html>
