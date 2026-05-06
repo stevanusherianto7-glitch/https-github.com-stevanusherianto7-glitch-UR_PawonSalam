@@ -11,8 +11,6 @@ import {
   LogOut,
   UserCircle,
   ChevronDown,
-  ChevronRight,
-  ChevronLeft,
 } from "lucide-react";
 
 const UrLogo = () => {
@@ -86,17 +84,43 @@ export default function Sidebar({
     setExpandedMenus((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const navItems = [
-    { id: "dashboard", label: "Dashboard", icon: Home },
+
+  const menuGroups = [
     {
-      id: "laporan",
-      label: "Laporan",
-      icon: FileText,
-      subItems: [
+      title: "MENU UTAMA",
+      items: [
+        { id: "dashboard", label: "Dashboard", icon: Home },
+      ]
+    },
+    {
+      title: "OPERASIONAL",
+      items: [
         {
-          id: "laporan_penjualan",
-          label: "Penjualan",
+          id: "laporan",
+          label: "Laporan",
+          icon: FileText,
           subItems: [
+            {
+              id: "laporan_penjualan",
+              label: "Penjualan",
+              subItems: [
+                { id: "lap_penj_summary", label: "Summary" },
+                { id: "lap_penj_pemasukan", label: "Pemasukan" },
+                { id: "lap_penj_laba_kotor", label: "Laba Kotor" },
+                { id: "lap_penj_laba_bersih", label: "Laba Bersih" },
+                { id: "lap_penj_tipe", label: "Tipe" },
+                { id: "lap_penj_departemen", label: "Departemen" },
+                { id: "lap_penj_kategori", label: "Kategori" },
+                { id: "lap_penj_produk", label: "Produk" },
+                { id: "lap_penj_variant", label: "Variant" },
+                { id: "lap_penj_bundle", label: "Bundle" },
+                { id: "lap_penj_meja", label: "Meja" },
+                { id: "lap_penj_diskon", label: "Diskon" },
+                { id: "lap_penj_pemasukan_service", label: "Pemasukan Service" },
+                { id: "lap_penj_pemasukan_pajak", label: "Pemasukan Pajak" },
+                { id: "lap_penj_surcharge", label: "Surcharge" },
+              ],
+            },
             { id: "laporan_shift", label: "Shift" },
             { id: "laporan_daftar_transaksi", label: "Daftar Transaksi" },
             { id: "laporan_nilai_stok", label: "Nilai Stok" },
@@ -107,90 +131,106 @@ export default function Sidebar({
             { id: "laporan_repeat_customers", label: "Repeat Customers" },
           ],
         },
-      ],
-    },
-    {
-      id: "meja",
-      label: "Meja",
-      icon: Monitor,
-      subItems: [
-        { id: "meja_daftar", label: "Daftar Meja" },
-        { id: "meja_group", label: "Group Meja" },
-      ],
-    },
-    {
-      id: "inventory",
-      label: "Inventory",
-      icon: Package,
-      subItems: [
-        { id: "inv_kategori", label: "Kategori" },
-        { id: "inv_bahan_baku", label: "Bahan Baku" },
-        { id: "inv_bahan_setengah_jadi", label: "Bahan Setengah Jadi" },
-        { id: "inv_produksi", label: "Produksi Setengah Jadi" },
-        { id: "inv_supplier", label: "Supplier" },
-        { id: "inv_po", label: "Purchase Order" },
-        { id: "inv_penerimaan", label: "Penerimaan Barang" },
-        { id: "inv_adjustment", label: "Adjustment" },
-      ],
-    },
-    {
-      id: "produk",
-      label: "Produk",
-      icon: Box,
-      subItems: [
-        { id: "prod_departemen", label: "Departemen" },
-        { id: "prod_kategori", label: "Kategori Produk" },
-        { id: "prod_daftar", label: "Produk" },
-        { id: "prod_varian", label: "Varian" },
-        { id: "prod_bundle", label: "Bundle" },
         {
-          id: "prod_preorder",
-          label: "Preorder",
+          id: "meja",
+          label: "Meja",
+          icon: Monitor,
           subItems: [
-            { id: "prod_po_daftar", label: "Daftar Preorder" },
-            { id: "prod_po_kategori", label: "Kategori Preorder" },
+            { id: "meja_daftar", label: "Daftar Meja" },
+            { id: "meja_group", label: "Group Meja" },
           ],
         },
-      ],
+      ]
     },
     {
-      id: "biaya_operasional",
-      label: "Biaya Operasional",
-      icon: Receipt,
-      subItems: [
-        { id: "biaya_kategori", label: "Kategori" },
-        { id: "biaya_ops", label: "Biaya Operasional" },
-        { id: "biaya_ops_auto", label: "Biaya Operasional Otomatis" },
-      ],
+      title: "INVENTORY & PRODUKSI",
+      items: [
+        {
+          id: "inventory",
+          label: "Inventory",
+          icon: Package,
+          subItems: [
+            { id: "inv_kategori", label: "Kategori" },
+            { id: "inv_bahan_baku", label: "Bahan Baku" },
+            { id: "inv_bahan_setengah_jadi", label: "Bahan Setengah Jadi" },
+            { id: "inv_produksi", label: "Produksi Setengah Jadi" },
+            { id: "inv_supplier", label: "Supplier" },
+            { id: "inv_po", label: "Purchase Order" },
+            { id: "inv_penerimaan", label: "Penerimaan Barang" },
+            { id: "inv_adjustment", label: "Adjustment" },
+          ],
+        },
+        {
+          id: "produk",
+          label: "Produk",
+          icon: Box,
+          subItems: [
+            { id: "prod_departemen", label: "Departemen" },
+            { id: "prod_kategori", label: "Kategori Produk" },
+            { id: "prod_daftar", label: "Produk" },
+            { id: "prod_varian", label: "Varian" },
+            { id: "prod_bundle", label: "Bundle" },
+            {
+              id: "prod_preorder",
+              label: "Preorder",
+              subItems: [
+                { id: "prod_po_produk", label: "Produk" },
+                { id: "prod_po_jadwal", label: "Jadwal" },
+              ],
+            },
+          ],
+        },
+      ]
     },
     {
-      id: "karyawan",
-      label: "Karyawan",
-      icon: Users,
-      subItems: [
-        { id: "kar_daftar", label: "Daftar Karyawan" },
-        { id: "kar_pola_kerja", label: "Pola Kerja" },
-        { id: "kar_laporan_kehadiran", label: "Laporan Kehadiran" },
-        { id: "kar_hak_akses", label: "Hak Akses" },
-      ],
+      title: "MANAJEMEN",
+      items: [
+        {
+          id: "biaya_operasional",
+          label: "Biaya Operasional",
+          icon: Receipt,
+          subItems: [
+            { id: "biaya_kategori", label: "Kategori" },
+            { id: "biaya_ops", label: "Biaya Operasional" },
+            { id: "biaya_ops_auto", label: "Biaya Operasional Otomatis" },
+          ],
+        },
+        {
+          id: "karyawan",
+          label: "Karyawan",
+          icon: Users,
+          subItems: [
+            { id: "kar_daftar", label: "Daftar Karyawan" },
+            { id: "kar_pola_kerja", label: "Pola Kerja" },
+            { id: "kar_laporan_kehadiran", label: "Laporan Kehadiran" },
+            { id: "kar_hak_akses", label: "Hak Akses" },
+          ],
+        },
+      ]
     },
     {
-      id: "pengaturan",
-      label: "Pengaturan",
-      icon: Settings,
-      subItems: [
-        { id: "pengaturan_akun", label: "Pengaturan Akun" },
-        { id: "pengaturan_partner", label: "Pengaturan Partner" },
-        { id: "pengaturan_selforder", label: "Pengaturan Selforder" },
-        { id: "pengaturan_printer", label: "Pengaturan Printer" },
-        { id: "pengaturan_surcharges", label: "Surcharges" },
-        { id: "pengaturan_pengiriman", label: "Pengiriman Toko" },
-        { id: "pengaturan_slider", label: "Slider Gambar" },
-        { id: "pengaturan_jam", label: "Jam Operasional" },
-        { id: "pengaturan_metode_bayar", label: "Metode Pembayaran" },
-        { id: "pengaturan_tambah_cabang", label: "Tambah Cabang" },
-      ],
-    },
+      title: "PENGATURAN",
+      items: [
+        {
+          id: "pengaturan",
+          label: "Pengaturan",
+          icon: Settings,
+          subItems: [
+            { id: "pengaturan_akun", label: "Pengaturan Akun" },
+            { id: "pengaturan_partner", label: "Pengaturan Partner" },
+            { id: "pengaturan_selforder", label: "Pengaturan Selforder" },
+            { id: "pengaturan_printer", label: "Pengaturan Printer" },
+            { id: "pengaturan_surcharges", label: "Surcharges" },
+            { id: "pengaturan_pengiriman", label: "Pengiriman Toko" },
+            { id: "pengaturan_slider", label: "Slider Gambar" },
+            { id: "pengaturan_jam", label: "Jam Operasional" },
+            { id: "pengaturan_metode_bayar", label: "Metode Pembayaran" },
+            { id: "pengaturan_tambah_cabang", label: "Tambah Cabang" },
+            { id: "pengaturan_tagihan", label: "Tagihan" },
+          ],
+        },
+      ]
+    }
   ];
 
   return (
@@ -201,135 +241,137 @@ export default function Sidebar({
         </div>
       </div>
 
-      <div className="px-5 mb-5 shrink-0">
-        <div className="bg-[#fceef5] rounded-2xl p-3 flex items-center gap-3">
-          <UserCircle size={36} className="text-[#de148c]" />
+      <div className="px-5 mb-6 shrink-0">
+        <div className="bg-[#ecfdf5] rounded-2xl p-3 flex items-center gap-3">
+          <UserCircle size={36} className="text-[#10b981]" />
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-[#de148c] text-sm">Anto</span>
-              <span className="bg-[#de148c] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm">
+              <span className="font-medium text-[#10b981] text-sm">Anto</span>
+              <span className="bg-[#10b981] text-white text-[10px] font-semibold px-1.5 py-0.5 rounded-sm">
                 MANAGER
               </span>
             </div>
-            <p className="text-xs text-gray-500 font-medium">Pawon Salam</p>
+            <p className="text-xs text-gray-500">Pawon Salam</p>
           </div>
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto w-full space-y-1 pb-4 scrollbar-thin">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isExpanded = expandedMenus[item.id];
-          const hasSubItems = item.subItems && item.subItems.length > 0;
-          const isActive = activeTab === item.id;
+      <div className="flex-1 overflow-y-auto w-full pb-4 scrollbar-thin space-y-6">
+        {menuGroups.map((group, gIdx) => (
+          <div key={gIdx} className="flex flex-col">
+            <h3 className="px-6 mb-2 text-xs font-bold text-orange-500 uppercase tracking-wider">
+              {group.title}
+            </h3>
+            <div className="flex flex-col space-y-1">
+              {group.items.map((item) => {
+                const Icon = item.icon;
+                const isExpanded = expandedMenus[item.id];
+                const hasSubItems = item.subItems && item.subItems.length > 0;
+                const isActive = activeTab === item.id;
 
-          return (
-            <div key={item.id} className="flex flex-col">
-              <button
-                onClick={(e) => {
-                  if (hasSubItems) {
-                    toggleMenu(item.id, e);
-                  } else {
-                    setActiveTab(item.id);
-                  }
-                }}
-                className={`w-full flex items-center gap-4 px-6 py-3.5 text-sm font-semibold transition-colors relative ${isActive ? "bg-[#fceef5] text-[#de148c]" : "text-gray-600 hover:bg-gray-50"}`}
-              >
-                {isActive && (
-                  <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#de148c] rounded-r-md" />
-                )}
-                <Icon
-                  size={20}
-                  className={isActive ? "text-[#de148c]" : "text-gray-500"}
-                  strokeWidth={isActive ? 2.5 : 2}
-                />
-                <span className="flex-1 text-left">{item.label}</span>
-                {hasSubItems && (
-                  <ChevronDown
-                    size={16}
-                    className={`text-gray-400 transition-transform ${isExpanded ? "" : "-rotate-90"}`}
-                  />
-                )}
-                {!hasSubItems && item.hasSub && (
-                  <ChevronLeft size={16} className="text-gray-400" />
-                )}
-              </button>
+                return (
+                  <div key={item.id} className="flex flex-col">
+                    <button
+                      onClick={(e) => {
+                        if (hasSubItems) {
+                          toggleMenu(item.id, e);
+                        } else {
+                          setActiveTab(item.id);
+                        }
+                      }}
+                      className={`w-full flex items-center gap-3 px-6 py-2 transition-colors relative ${isActive ? "text-[#10b981] font-medium" : "text-gray-600 hover:text-gray-900"}`}
+                    >
+                      {isActive && (
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#10b981] rounded-r-md" />
+                      )}
+                      <Icon
+                        size={18}
+                        className={isActive ? "text-[#10b981]" : "text-gray-500"}
+                        strokeWidth={isActive ? 2.5 : 2}
+                      />
+                      <span className="flex-1 text-left text-[14px]">{item.label}</span>
+                      {hasSubItems && (
+                        <ChevronDown
+                          size={14}
+                          className={`text-gray-400 transition-transform ${isExpanded ? "" : "-rotate-90"}`}
+                        />
+                      )}
+                    </button>
 
-              {hasSubItems && isExpanded && (
-                <div className="flex flex-col mt-1 mb-2">
-                  {item.subItems.map((sub) => {
-                    const isSubActive = activeTab === sub.id;
-                    const isSubExpanded = expandedMenus[sub.id];
-                    const hasDeepSub = sub.subItems && sub.subItems.length > 0;
+                    {hasSubItems && isExpanded && (
+                      <div className="flex flex-col mt-1 mb-2 space-y-1">
+                        {item.subItems.map((sub) => {
+                          const isSubActive = activeTab === sub.id;
+                          const isSubExpanded = expandedMenus[sub.id];
+                          const hasDeepSub = sub.subItems && sub.subItems.length > 0;
 
-                    return (
-                      <div key={sub.id} className="flex flex-col">
-                        <button
-                          onClick={(e) => {
-                            if (hasDeepSub) {
-                              toggleMenu(sub.id, e);
-                            } else {
-                              setActiveTab(sub.id);
-                            }
-                          }}
-                          className={`w-full flex items-center pl-[52px] pr-6 py-3 text-[13px] transition-colors relative ${
-                            isSubActive
-                              ? "bg-[#fceef5] text-[#de148c] font-semibold"
-                              : "text-gray-500 hover:bg-gray-50"
-                          }`}
-                        >
-                          {isSubActive && (
-                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#de148c] rounded-r-md" />
-                          )}
-                          <span className="flex-1 text-left">{sub.label}</span>
-                          {hasDeepSub && (
-                            <ChevronDown
-                              size={14}
-                              className={`text-gray-400 transition-transform ${isSubExpanded ? "" : "-rotate-90"}`}
-                            />
-                          )}
-                          {!hasDeepSub && sub.hasSub && (
-                            <ChevronLeft size={14} className="text-gray-400" />
-                          )}
-                        </button>
+                          return (
+                            <div key={sub.id} className="flex flex-col">
+                              <button
+                                onClick={(e) => {
+                                  if (hasDeepSub) {
+                                    toggleMenu(sub.id, e);
+                                  } else {
+                                    setActiveTab(sub.id);
+                                  }
+                                }}
+                                className={`w-full flex items-center pl-[48px] pr-6 py-2 transition-colors relative ${
+                                  isSubActive
+                                    ? "text-[#10b981] font-medium"
+                                    : "text-gray-500 hover:text-gray-800"
+                                }`}
+                              >
+                                {isSubActive && (
+                                  <div className="absolute left-0 top-[20%] bottom-[20%] w-1 bg-[#10b981] rounded-r-md" />
+                                )}
+                                <span className="flex-1 text-left text-[13px]">{sub.label}</span>
+                                {hasDeepSub && (
+                                  <ChevronDown
+                                    size={14}
+                                    className={`text-gray-400 transition-transform ${isSubExpanded ? "" : "-rotate-90"}`}
+                                  />
+                                )}
+                              </button>
 
-                        {hasDeepSub && isSubExpanded && (
-                          <div className="flex flex-col py-1">
-                            {sub.subItems.map((deepSub) => {
-                              const isDeepActive = activeTab === deepSub.id;
-                              return (
-                                <button
-                                  key={deepSub.id}
-                                  onClick={() => setActiveTab(deepSub.id)}
-                                  className={`w-full flex items-center pl-[68px] pr-6 py-2.5 text-xs transition-colors relative ${
-                                    isDeepActive
-                                      ? "bg-[#fceef5] text-[#de148c] font-semibold"
-                                      : "text-gray-500 hover:bg-gray-50"
-                                  }`}
-                                >
-                                  {isDeepActive && (
-                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#de148c] rounded-r-md" />
-                                  )}
-                                  <span className="flex-1 text-left">
-                                    {deepSub.label}
-                                  </span>
-                                </button>
-                              );
-                            })}
-                          </div>
-                        )}
+                              {hasDeepSub && isSubExpanded && (
+                                <div className="flex flex-col py-1 space-y-1">
+                                  {sub.subItems.map((deepSub) => {
+                                    const isDeepActive = activeTab === deepSub.id;
+                                    return (
+                                      <button
+                                        key={deepSub.id}
+                                        onClick={() => setActiveTab(deepSub.id)}
+                                        className={`w-full flex items-center pl-[64px] pr-6 py-2 transition-colors relative ${
+                                          isDeepActive
+                                            ? "text-[#10b981] font-medium"
+                                            : "text-gray-500 hover:text-gray-800"
+                                        }`}
+                                      >
+                                        {isDeepActive && (
+                                          <div className="absolute left-0 top-[20%] bottom-[20%] w-1 bg-[#10b981] rounded-r-md" />
+                                        )}
+                                        <span className="flex-1 text-left text-[13px]">
+                                          {deepSub.label}
+                                        </span>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
-                    );
-                  })}
-                </div>
-              )}
+                    )}
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
-
       <div className="p-4 border-t border-[#eaecf0] shrink-0 bg-white">
-        <button className="w-full flex items-center gap-4 px-6 py-3.5 text-sm font-semibold text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+        <button className="w-full flex items-center gap-4 px-6 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
           <LogOut size={20} className="text-gray-500" />
           Keluar
         </button>
